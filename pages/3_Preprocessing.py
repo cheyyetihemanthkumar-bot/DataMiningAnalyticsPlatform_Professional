@@ -16,7 +16,7 @@ from theme import apply_theme
 # ============================================================
 
 st.set_page_config(
-    page_title="Preprocessing",
+    page_title=" Healthcare Preprocessing",
     page_icon="🧹",
     layout="wide"
 )

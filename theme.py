@@ -6,13 +6,13 @@ from pathlib import Path
 def apply_theme():
 
     # ============================================================
-    # CRICKET BACKGROUND IMAGE
+    # CARDIOVASCULAR HEALTHCARE BACKGROUND IMAGE
     # ============================================================
 
     image_path = (
         Path(__file__).parent
         / "assets"
-        / "cricket_background.png"
+        / "image.png"
     )
 
     if image_path.exists():
@@ -25,8 +25,8 @@ def apply_theme():
         background_css = f"""
         background-image:
             linear-gradient(
-                rgba(0, 0, 0, 0.42),
-                rgba(0, 0, 0, 0.42)
+                rgba(0, 20, 40, 0.48),
+                rgba(0, 15, 35, 0.48)
             ),
             url("data:image/png;base64,{encoded_image}");
 
@@ -39,11 +39,11 @@ def apply_theme():
     else:
 
         background_css = """
-        background-color: #0E1117;
+        background-color: #071A2B;
         """
 
     # ============================================================
-    # APPLY GLOBAL THEME
+    # GLOBAL STREAMLIT THEME
     # ============================================================
 
     st.markdown(
@@ -51,7 +51,7 @@ def apply_theme():
         <style>
 
         /* ========================================================
-           REMOVE STREAMLIT WHITE BACKGROUND
+           REMOVE DEFAULT STREAMLIT BACKGROUND
         ======================================================== */
 
         html,
@@ -67,13 +67,10 @@ def apply_theme():
             background: transparent !important;
         }}
 
-        /* ========================================================
-           MAIN APPLICATION BACKGROUND
-        ======================================================== */
-
         .stApp {{
             {background_css}
             color: #FFFFFF !important;
+            min-height: 100vh;
         }}
 
         .main {{
@@ -83,10 +80,12 @@ def apply_theme():
         .main .block-container {{
             background: transparent !important;
             padding-top: 2rem;
+            padding-bottom: 3rem;
         }}
 
+
         /* ========================================================
-           STREAMLIT TOP HEADER
+           STREAMLIT HEADER
         ======================================================== */
 
         [data-testid="stHeader"] {{
@@ -101,16 +100,13 @@ def apply_theme():
             background: transparent !important;
         }}
 
-        /* ========================================================
-           TOP DECORATION
-        ======================================================== */
-
         [data-testid="stDecoration"] {{
             background: transparent !important;
         }}
 
+
         /* ========================================================
-           ALL HEADINGS
+           HEADINGS
         ======================================================== */
 
         h1,
@@ -120,10 +116,23 @@ def apply_theme():
         h5,
         h6 {{
             color: #FFFFFF !important;
-
+            font-weight: 700 !important;
             text-shadow:
                 2px 2px 5px rgba(0, 0, 0, 0.90) !important;
         }}
+
+        h1 {{
+            font-size: 2.4rem !important;
+        }}
+
+        h2 {{
+            font-size: 1.8rem !important;
+        }}
+
+        h3 {{
+            font-size: 1.4rem !important;
+        }}
+
 
         /* ========================================================
            NORMAL TEXT
@@ -142,8 +151,9 @@ def apply_theme():
         }}
 
         .stCaption {{
-            color: #FFFFFF !important;
+            color: #E0E0E0 !important;
         }}
+
 
         /* ========================================================
            SIDEBAR
@@ -151,18 +161,19 @@ def apply_theme():
 
         section[data-testid="stSidebar"] {{
             background:
-                rgba(5, 15, 30, 0.94) !important;
+                linear-gradient(
+                    rgba(3, 20, 35, 0.97),
+                    rgba(4, 25, 45, 0.97)
+                ) !important;
 
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            border-right:
+                1px solid rgba(255, 255, 255, 0.12);
         }}
 
         section[data-testid="stSidebar"] * {{
             color: #FFFFFF !important;
         }}
-
-        /* ========================================================
-           SIDEBAR HEADINGS
-        ======================================================== */
 
         section[data-testid="stSidebar"] h1,
         section[data-testid="stSidebar"] h2,
@@ -173,8 +184,9 @@ def apply_theme():
             color: #FFFFFF !important;
         }}
 
+
         /* ========================================================
-           NORMAL BUTTONS
+           BUTTONS
         ======================================================== */
 
         .stButton > button {{
@@ -189,7 +201,7 @@ def apply_theme():
 
             border:
                 1px solid
-                rgba(255,255,255,0.45) !important;
+                rgba(255, 255, 255, 0.40) !important;
 
             border-radius: 10px !important;
 
@@ -199,8 +211,8 @@ def apply_theme():
             font-weight: 600 !important;
 
             box-shadow:
-                0 4px 10px
-                rgba(0,0,0,0.30) !important;
+                0 4px 12px
+                rgba(0, 0, 0, 0.35) !important;
 
             transition:
                 all 0.2s ease !important;
@@ -216,15 +228,20 @@ def apply_theme():
 
             border-color: #FFFFFF !important;
 
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 16px
+                rgba(0, 0, 0, 0.45) !important;
         }}
 
         .stButton > button p {{
             color: #FFFFFF !important;
         }}
 
+
         /* ========================================================
-           DOWNLOAD BUTTONS
+           DOWNLOAD BUTTON
         ======================================================== */
 
         .stDownloadButton > button {{
@@ -239,7 +256,7 @@ def apply_theme():
 
             border:
                 1px solid
-                rgba(255,255,255,0.45) !important;
+                rgba(255, 255, 255, 0.40) !important;
 
             border-radius: 10px !important;
 
@@ -249,8 +266,8 @@ def apply_theme():
             font-weight: 600 !important;
 
             box-shadow:
-                0 4px 10px
-                rgba(0,0,0,0.30) !important;
+                0 4px 12px
+                rgba(0, 0, 0, 0.35) !important;
         }}
 
         .stDownloadButton > button:hover {{
@@ -263,12 +280,54 @@ def apply_theme():
 
             border-color: #FFFFFF !important;
 
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }}
 
         .stDownloadButton > button p {{
             color: #FFFFFF !important;
         }}
+
+
+        /* ========================================================
+           METRIC CARDS
+        ======================================================== */
+
+        div[data-testid="stMetric"] {{
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(5, 30, 55, 0.94),
+                    rgba(10, 45, 75, 0.90)
+                ) !important;
+
+            border-radius: 14px !important;
+
+            padding: 18px !important;
+
+            border:
+                1px solid
+                rgba(100, 200, 255, 0.25) !important;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, 0.40) !important;
+
+            backdrop-filter: blur(8px);
+        }}
+
+        div[data-testid="stMetric"] * {{
+            color: #FFFFFF !important;
+        }}
+
+        div[data-testid="stMetricLabel"] {{
+            color: #B9E7FF !important;
+        }}
+
+        div[data-testid="stMetricValue"] {{
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+        }}
+
 
         /* ========================================================
            FILE UPLOADER
@@ -276,19 +335,25 @@ def apply_theme():
 
         [data-testid="stFileUploader"] {{
             background:
-                rgba(10, 20, 35, 0.92) !important;
+                rgba(5, 25, 45, 0.94) !important;
 
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 12px !important;
+
+            padding: 12px !important;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.20) !important;
         }}
 
         [data-testid="stFileUploader"] button {{
             background: #1976D2 !important;
+
             color: #FFFFFF !important;
 
             border:
                 1px solid
-                rgba(255,255,255,0.45) !important;
+                rgba(255, 255, 255, 0.40) !important;
         }}
 
         [data-testid="stFileUploader"] button span {{
@@ -297,7 +362,6 @@ def apply_theme():
 
         [data-testid="stFileUploader"] small {{
             color: #FFFFFF !important;
-            opacity: 1 !important;
         }}
 
         [data-testid="stFileUploader"] p {{
@@ -314,12 +378,13 @@ def apply_theme():
 
         [data-testid="stFileUploaderDropzone"] {{
             background:
-                rgba(10, 20, 35, 0.92) !important;
+                rgba(5, 25, 45, 0.92) !important;
 
             border:
                 1px solid
-                rgba(255,255,255,0.40) !important;
+                rgba(100, 200, 255, 0.30) !important;
         }}
+
 
         /* ========================================================
            SELECT BOX
@@ -327,12 +392,15 @@ def apply_theme():
 
         div[data-baseweb="select"] {{
             background:
-                rgba(10, 20, 35, 0.90) !important;
+                rgba(5, 25, 45, 0.95) !important;
+
+            border-radius: 8px !important;
         }}
 
         div[data-baseweb="select"] * {{
             color: #FFFFFF !important;
         }}
+
 
         /* ========================================================
            TEXT INPUT
@@ -343,14 +411,21 @@ def apply_theme():
             color: #FFFFFF !important;
 
             background:
-                rgba(10, 20, 35, 0.90) !important;
+                rgba(5, 25, 45, 0.95) !important;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.20) !important;
+
+            border-radius: 8px !important;
         }}
 
         input::placeholder,
         textarea::placeholder {{
-            color: #DDDDDD !important;
+            color: #D0D0D0 !important;
             opacity: 1 !important;
         }}
+
 
         /* ========================================================
            NUMBER INPUT
@@ -360,8 +435,9 @@ def apply_theme():
             color: #FFFFFF !important;
 
             background:
-                rgba(10, 20, 35, 0.90) !important;
+                rgba(5, 25, 45, 0.95) !important;
         }}
+
 
         /* ========================================================
            MULTISELECT
@@ -369,12 +445,13 @@ def apply_theme():
 
         div[data-testid="stMultiSelect"] {{
             background:
-                rgba(10, 20, 35, 0.90) !important;
+                rgba(5, 25, 45, 0.95) !important;
         }}
 
         div[data-testid="stMultiSelect"] * {{
             color: #FFFFFF !important;
         }}
+
 
         /* ========================================================
            RADIO BUTTONS
@@ -384,6 +461,7 @@ def apply_theme():
             color: #FFFFFF !important;
         }}
 
+
         /* ========================================================
            CHECKBOX
         ======================================================== */
@@ -391,6 +469,7 @@ def apply_theme():
         div[data-testid="stCheckbox"] label {{
             color: #FFFFFF !important;
         }}
+
 
         /* ========================================================
            TOGGLE
@@ -400,30 +479,6 @@ def apply_theme():
             color: #FFFFFF !important;
         }}
 
-        /* ========================================================
-           METRIC CARDS
-        ======================================================== */
-
-        div[data-testid="stMetric"] {{
-            background:
-                rgba(10, 20, 35, 0.90) !important;
-
-            border-radius: 14px;
-
-            padding: 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.20);
-
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,0.35);
-        }}
-
-        div[data-testid="stMetric"] * {{
-            color: #FFFFFF !important;
-        }}
 
         /* ========================================================
            DATAFRAME
@@ -431,17 +486,22 @@ def apply_theme():
 
         [data-testid="stDataFrame"] {{
             background:
-                rgba(10, 20, 35, 0.92) !important;
+                rgba(5, 25, 45, 0.94) !important;
 
-            border-radius: 10px;
+            border-radius: 10px !important;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.18) !important;
         }}
+
 
         /* ========================================================
            ALERTS
         ======================================================== */
 
         [data-testid="stAlert"] {{
-            border-radius: 10px;
+            border-radius: 10px !important;
         }}
 
         [data-testid="stAlert"] p,
@@ -449,20 +509,28 @@ def apply_theme():
             color: #FFFFFF !important;
         }}
 
+
         /* ========================================================
            EXPANDERS
         ======================================================== */
 
         [data-testid="stExpander"] {{
             background:
-                rgba(10, 20, 35, 0.88) !important;
+                rgba(5, 25, 45, 0.90) !important;
 
-            border-radius: 10px;
+            border-radius: 10px !important;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15) !important;
+
+            backdrop-filter: blur(8px);
         }}
 
         [data-testid="stExpander"] * {{
             color: #FFFFFF !important;
         }}
+
 
         /* ========================================================
            TABS
@@ -476,29 +544,141 @@ def apply_theme():
             color: #FFFFFF !important;
         }}
 
-        /* ========================================================
-           DIVIDERS
-        ======================================================== */
-
-        hr {{
-            border-color:
-                rgba(255,255,255,0.35) !important;
-        }}
 
         /* ========================================================
            LINKS
         ======================================================== */
 
         a {{
+            color: #8ED8FF !important;
+            font-weight: 500;
+        }}
+
+        a:hover {{
             color: #FFFFFF !important;
         }}
 
+
         /* ========================================================
-           NOTIFICATIONS
+           DIVIDERS
         ======================================================== */
 
-        [data-testid="stNotification"] * {{
+        hr {{
+            border-color:
+                rgba(255, 255, 255, 0.25) !important;
+        }}
+
+
+        /* ========================================================
+           COLUMNS / CARDS
+        ======================================================== */
+
+        div[data-testid="column"] {{
             color: #FFFFFF !important;
+        }}
+
+
+        /* ========================================================
+           SCROLLBAR
+        ======================================================== */
+
+        ::-webkit-scrollbar {{
+            width: 8px;
+            height: 8px;
+        }}
+
+        ::-webkit-scrollbar-track {{
+            background: #061522;
+        }}
+
+        ::-webkit-scrollbar-thumb {{
+            background: #1976D2;
+            border-radius: 10px;
+        }}
+
+        ::-webkit-scrollbar-thumb:hover {{
+            background: #2196F3;
+        }}
+
+
+        /* ========================================================
+           CARD STYLE FOR CUSTOM HTML
+        ======================================================== */
+
+        .health-card {{
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(5, 30, 55, 0.94),
+                    rgba(10, 45, 75, 0.88)
+                );
+
+            border:
+                1px solid
+                rgba(100, 200, 255, 0.25);
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0, 0, 0, 0.35);
+
+            backdrop-filter: blur(10px);
+        }}
+
+        .health-card h3 {{
+            color: #FFFFFF !important;
+            margin-bottom: 8px;
+        }}
+
+        .health-card p {{
+            color: #DDEEFF !important;
+        }}
+
+
+        /* ========================================================
+           CVD TITLE
+        ======================================================== */
+
+        .cvd-title {{
+            text-align: center;
+
+            font-size: 2.4rem;
+
+            font-weight: 800;
+
+            color: #FFFFFF;
+
+            text-shadow:
+                2px 2px 8px rgba(0, 0, 0, 0.90);
+
+            margin-bottom: 5px;
+        }}
+
+        .cvd-subtitle {{
+            text-align: center;
+
+            font-size: 1.05rem;
+
+            color: #D7F3FF !important;
+
+            text-shadow:
+                1px 1px 4px rgba(0, 0, 0, 0.80);
+
+            margin-bottom: 25px;
+        }}
+
+
+        /* ========================================================
+           FOOTER
+        ======================================================== */
+
+        footer {{
+            visibility: hidden;
         }}
 
         </style>
