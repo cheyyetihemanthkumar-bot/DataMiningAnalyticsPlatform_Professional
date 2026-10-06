@@ -12,7 +12,7 @@ def apply_theme():
     image_path = (
         Path(__file__).parent
         / "assets"
-        / "image.png"
+        / "image.jpg"
     )
 
     if image_path.exists():
